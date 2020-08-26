@@ -34,7 +34,8 @@ population = 2
 def startSim():
     print("Start button pressed")
 
-
+def pauseSim():
+    print("Pause button pressed")
 
 def quitGame():
     print("Game Quit")
@@ -65,16 +66,18 @@ def popLabel(label):
 root = tk.Tk() #init the tkinter window
 root.title("Absolutely Horrendous Life and World Simulator")    # Window title
 root.geometry("800x900") #window size
-frame = tk.Frame(root)
-frame.pack()
 
 
+belowMap = tk.Frame(root)
+belowMap.pack(side="bottom", fill="both", expand=True)
 #canvas test
 
 canvasTest = tk.Canvas(root, bg="light grey", height="450", width="750")
-canvasBgImage = ImageTk.PhotoImage(file=".\worldmap.gif")
-canvasTest.create_image(450, 750, image=canvasBgImage)
-canvasTest.pack()
+canvasTest.pack(expand="no", fill="none")
+
+
+canvasBgImage = tk.PhotoImage(file=".\worldmap.gif")
+canvasTest.create_image(1, 1, image=canvasBgImage, anchor="nw")
 
 
 textPopulationLabel = tk.Label(root, text="Population") # 'Population' text above population counter
@@ -85,9 +88,11 @@ populationLabel.pack()
 popLabel(populationLabel)
 
 startButton = tk.Button(root, text="Start Sim", command =startSim, height="5", width="15")
-startButton.pack(anchor="se")
-quitButton = tk.Button(root, text="Quit", command=quitGame, height="5", width="15") # kills app
-quitButton.pack(anchor="se")
+startButton.pack(in_=belowMap, side="left")
+pauseButton = tk.Button(root, text="Pause Sim", command=pauseSim, height="5", width="15")
+pauseButton.pack(in_=belowMap, side="left")
+quitButton = tk.Button(root, text="Quit Sim", command=quitGame, height="5", width="15") # kills app
+quitButton.pack(in_=belowMap, side="left")
 
 
 
