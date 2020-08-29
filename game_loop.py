@@ -1,9 +1,8 @@
-# example base
 import pygame as pg
 from pygame.locals import *
 import sys
 
-import basic_ui
+import ui.basic_ui
 
 pg.init()
 pg.font.init()
@@ -22,7 +21,8 @@ font = pg.font.SysFont("Arial",16)
 running = True
 
 #image dimesions are 750 x 450
-ui = basic_ui.Home_Window( \
+#Home_ui is the basic surface we're blitting all the components to
+home_ui = ui.basic_ui.Home_Window( \
     screen_width,              \
     700,                       \
     screen_width,              \
@@ -38,10 +38,10 @@ while running:
             break
 
     #Update the pygame Surfaces
-    ui.update()
+    home_ui.update()
 
     # blit everything to the screen
-    screen.blit(ui, (0,0))
+    screen.blit(home_ui, (0,0))
 
     #Updates the Window
     display.update()
