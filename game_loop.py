@@ -1,47 +1,66 @@
 import pygame as pg
 from pygame.locals import *
+from game_settings import Settings
 import sys
 
 import ui.basic_ui
 
-pg.init()
-pg.font.init()
 
-#Display vars
-size = screen_width, screen_height = 1920, 1080 #temporary
-caption = 'Terrible World Simulator'
-display = pg.display
-screen = display.set_mode(size, RESIZABLE) #you can also use SCREEN_SIZE
-display.set_caption(caption)
+class Terrible_World_Simulator:
+    ''' The main loop for the sim '''
 
-#FPS Counter
-clock = pg.time.Clock()
-font = pg.font.SysFont("Arial",16)
+    def __init__(self):
+        pg.init()
+        pg.font.init()
 
-running = True
+        # init our settings
+        self.settings = Settings(self)
 
-#image dimesions are 750 x 450
-#Home_ui is the basic surface we're blitting all the components to
-home_ui = ui.basic_ui.Home_Window( \
-    screen_width,              \
-    700,                       \
-    screen_width,              \
-    screen_height              \
-) # imgwidth, imgheight, screenwidth, screenheight
+        # FPS Counter
+        self.clock = pg.time.Clock()
+        self.font = pg.font.SysFont("Arial", 16)
 
-while running:
-    screen.fill((255,255,255))
+        self.display = pg.display
+        # you can also use SCREEN_SIZE
+        self.screen = self.display.set_mode(self.settings.size, RESIZABLE)
+        self.display.set_caption(self.settings.caption)
 
-    for event in pg.event.get():
-        if event.type == pg.QUIT:
-            running = False
-            break
+        self.running = True
 
-    #Update the pygame Surfaces
-    home_ui.update()
+        # image dimesions are 750 x 450
+        # Home_ui is the basic surface we're blitting all the components to
+        self.home_ui = ui.basic_ui.Home_Window(
+            self.settings.screen_width,
+            700,
+            self.settings.screen_width,
+            self.settings.screen_height
+        )  # imgwidth, imgheight, screenwidth, screenheight
 
-    # blit everything to the screen
-    screen.blit(home_ui, (0,0))
+    def _check_for_events(self):
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                self.running = False
 
-    #Updates the Window
-    display.update()
+    def run_sim(self):
+        ''' run the game '''
+
+        while self.running:
+            # set the pace of the game
+            self.clock.tick(self.settings.game_pace)
+            self.screen.fill(self.settings.background_color)
+            self._check_for_events()
+
+            # Update the pygame Surfaces
+            self.home_ui.update()
+
+            # blit everything to the screen
+            self.screen.blit(self.home_ui, (0, 0))
+
+            # Updates the Window
+            self.display.update()
+
+
+# if this file is the one that the program is executed from.
+if __name__ == "__main__":
+    terrible_world_sim = Terrible_World_Simulator()
+    terrible_world_sim.run_sim()
