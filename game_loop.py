@@ -40,7 +40,13 @@ class Terrible_World_Simulator:
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 self.running = False
+                return
 
+            # elif event.type == pg.VIDEORESIZE:
+            #     self.screen = pg.display.set_mode((event.w, event.h), pg.RESIZABLE)
+            #     self.home_ui.resize(event.w, event.h)
+
+    # main loop
     def run_sim(self):
         ''' run the game '''
 
