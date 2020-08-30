@@ -59,11 +59,11 @@ class Home_Window(pg.Surface):
     def check_buttons(self, pos):
         mouse_position = pos
 
-        if (button_clicked := self.play_button.rect.collidepoint(mouse_position)):
+        if self.play_button.rect.collidepoint(mouse_position):
             print("Play button pressed!")
-        elif (button_clicked := self.stop_button.rect.collidepoint(mouse_position)):
+        elif self.stop_button.rect.collidepoint(mouse_position):
             print("Stop button pressed!")
-        elif (button_clicked := self.pause_button.rect.collidepoint(mouse_position)):
+        elif self.pause_button.rect.collidepoint(mouse_position):
             print("Pause button pressed!")
 
     def update(self):
