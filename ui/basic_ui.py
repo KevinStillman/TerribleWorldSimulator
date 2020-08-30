@@ -56,8 +56,8 @@ class Home_Window(pg.Surface):
     #     self.__init__(self.w * new_width / 1920, self.h * new_height / 1080, self.w, self.h)
     #     self.img.scale_img(self.w // oldw, self.h // oldh)
 
-    def check_buttons(self):
-        mouse_position = pg.mouse.get_pos()
+    def check_buttons(self, pos):
+        mouse_position = pos
 
         if (button_clicked := self.play_button.rect.collidepoint(mouse_position)):
             print("Play button pressed!")
