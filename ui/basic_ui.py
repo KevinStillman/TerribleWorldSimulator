@@ -1,7 +1,7 @@
 import pygame as pg
 import sys
 
-from src.colors import White
+from src.colors import White, Black
 
 from ui.component_img import Component_Img
 from ui.component_text import Component_Text
@@ -22,8 +22,8 @@ class Home_Window(pg.Surface):
         # load our image and font
         self._load_assets()
         # load button
-        self.play_button = Component_Button(150, 50, self)
-        self.play_button.set_coors(150,0)
+        self.play_button = Component_Button(0, 0, self)
+        self.play_button.set_coors(150,150)
 
         self.img = Component_Img(int(w * .75), int(h * .75))
         self.img.set_img(self.worldmap)
@@ -33,6 +33,7 @@ class Home_Window(pg.Surface):
         self.text = Component_Text(screen_width, int(screen_height * .33))
         self.text.set_text("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
         self.text.set_coors(0, self.img.img_height)
+        self.text.set_fontsize(25)
         self.text.set_screen_dimensions(screen_width, screen_height)
 
     def _load_assets(self):
