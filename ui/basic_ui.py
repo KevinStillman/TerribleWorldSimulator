@@ -21,9 +21,8 @@ class Home_Window(pg.Surface):
 
         # load our image and font
         self._load_assets()
-        # load button
-        self.play_button = Component_Button(0, 0, self)
-        self.play_button.set_coors(150,150)
+        # load buttons
+        self._load_buttons()
 
         self.img = Component_Img(int(w * .75), int(h * .75))
         self.img.set_img(self.worldmap)
@@ -35,6 +34,14 @@ class Home_Window(pg.Surface):
         self.text.set_coors(0, self.img.img_height)
         self.text.set_fontsize(25)
         self.text.set_screen_dimensions(screen_width, screen_height)
+
+    def _load_buttons(self):
+        self.play_button = Component_Button("Play", 150, 50, self)
+        self.play_button.set_coors(10, 450)
+        self.stop_button = Component_Button("Stop", 150, 50, self)
+        self.stop_button.set_coors(210, 450)
+        self.pause_button = Component_Button("Pause", 150, 50, self)
+        self.pause_button.set_coors(410, 450)
 
     def _load_assets(self):
         self.arial = pg.font.SysFont("Arial", 25)
@@ -49,6 +56,16 @@ class Home_Window(pg.Surface):
     #     self.__init__(self.w * new_width / 1920, self.h * new_height / 1080, self.w, self.h)
     #     self.img.scale_img(self.w // oldw, self.h // oldh)
 
+    def check_buttons(self):
+        mouse_position = pg.mouse.get_pos()
+
+        if (button_clicked := self.play_button.rect.collidepoint(mouse_position)):
+            print("Play button pressed!")
+        elif (button_clicked := self.stop_button.rect.collidepoint(mouse_position)):
+            print("Stop button pressed!")
+        elif (button_clicked := self.pause_button.rect.collidepoint(mouse_position)):
+            print("Pause button pressed!")
+
     def update(self):
         # Draw background
         self.fill(White)
@@ -59,6 +76,8 @@ class Home_Window(pg.Surface):
 
         # Draw play button
         self.play_button.draw_button()
+        self.stop_button.draw_button()
+        self.pause_button.draw_button()
 
         # Draw the Info tab
         # later we'll need to function to retrieve and parse the trackable stats

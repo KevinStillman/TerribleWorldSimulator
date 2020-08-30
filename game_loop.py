@@ -41,6 +41,8 @@ class Terrible_World_Simulator:
             if event.type == pg.QUIT:
                 self.running = False
                 return
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                self.home_ui.check_buttons()
 
             # elif event.type == pg.VIDEORESIZE:
             #     self.screen = pg.display.set_mode((event.w, event.h), pg.RESIZABLE)
