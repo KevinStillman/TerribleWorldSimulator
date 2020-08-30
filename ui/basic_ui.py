@@ -5,7 +5,7 @@ from src.colors import White
 
 from ui.component_img import Component_Img
 from ui.component_text import Component_Text
-from ui.buttons import PlayButton
+from ui.component_button import Component_Button
 
 
 class Home_Window(pg.Surface):
@@ -22,7 +22,8 @@ class Home_Window(pg.Surface):
         # load our image and font
         self._load_assets()
         # load button
-        self.play_button = PlayButton(self)
+        self.play_button = Component_Button(150, 50, self)
+        self.play_button.set_coors(150,0)
 
         self.img = Component_Img(int(w * .75), int(h * .75))
         self.img.set_img(self.worldmap)
