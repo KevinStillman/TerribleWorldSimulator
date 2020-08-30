@@ -5,13 +5,14 @@ from src.colors import White
 
 from ui.component_img import Component_Img
 from ui.component_text import Component_Text
+from ui.buttons import PlayButton
 
 
 class Home_Window(pg.Surface):
     """docstring for Home_Window."""
 
     def __init__(self, w: int, h: int, screen_width: int, screen_height: int):
-        w,h = int(w), int(h)
+        w, h = int(w), int(h)
         super(Home_Window, self).__init__((w, h))
         self.w = w
         self.h = h
@@ -20,6 +21,8 @@ class Home_Window(pg.Surface):
 
         # load our image and font
         self._load_assets()
+        # load button
+        self.play_button = PlayButton(self)
 
         self.img = Component_Img(int(w * .75), int(h * .75))
         self.img.set_img(self.worldmap)
@@ -51,6 +54,9 @@ class Home_Window(pg.Surface):
         # Drawing the Image
         self.img.update()
         self.blit(self.img, (self.img.coors))
+
+        # Draw play button
+        self.play_button.draw_button()
 
         # Draw the Info tab
         # later we'll need to function to retrieve and parse the trackable stats
