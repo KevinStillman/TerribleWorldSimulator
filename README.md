@@ -10,7 +10,7 @@ To develop we recommend getting a virtual environment setup.
 ##### Mac Venv
 Open a terminal and navigate to the root of this project
 
-```shell
+```console
 python3 -m venv venv
 source venv/bin/activate
 python -m pip install -r requirements.txt
@@ -19,7 +19,7 @@ python -m pip install -r requirements.txt
 ##### Windows Venv
 Open a command prompt and navigate to the root of this project
 
-```shell
+```console
 python -m venv venv
 venv\Scripts\activate
 python -m pip install -r requirements.txt
