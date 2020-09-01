@@ -11,9 +11,9 @@ To develop we recommend getting a virtual environment setup.
 Open a terminal and navigate to the root of this project
 
 ```console
-python3 -m venv venv
-source venv/bin/activate
-python -m pip install -r requirements.txt
+user:$ python3 -m venv venv
+user:$ source venv/bin/activate
+user:$ python -m pip install -r requirements.txt
 ```
 
 ##### Windows Venv
