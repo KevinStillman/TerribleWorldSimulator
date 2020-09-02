@@ -37,11 +37,11 @@ class Home_Window(pg.Surface):
 
     def _load_buttons(self):
         self.play_button = Component_Button("Play", 150, 50, self)
-        self.play_button.set_coors(10, 450)
+        self.play_button.set_coors(210, 500)
         self.stop_button = Component_Button("Stop", 150, 50, self)
-        self.stop_button.set_coors(210, 450)
+        self.stop_button.set_coors(410, 500)
         self.pause_button = Component_Button("Pause", 150, 50, self)
-        self.pause_button.set_coors(410, 450)
+        self.pause_button.set_coors(610, 500)
 
     def _load_assets(self):
         self.arial = pg.font.SysFont("Arial", 25)
@@ -74,12 +74,11 @@ class Home_Window(pg.Surface):
         self.img.update()
         self.blit(self.img, (self.img.coors))
 
-        # Draw play button
-        self.play_button.draw_button()
-        self.stop_button.draw_button()
-        self.pause_button.draw_button()
-
         # Draw the Info tab
         # later we'll need to function to retrieve and parse the trackable stats
         self.text.update()
         self.blit(self.text, self.text.bounding_rect)
+
+        self.play_button.draw_button()
+        self.stop_button.draw_button()
+        self.pause_button.draw_button()
