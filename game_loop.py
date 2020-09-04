@@ -31,7 +31,7 @@ class Terrible_World_Simulator:
         # Home_ui is the basic surface we're blitting all the components to
         self.home_ui = ui.basic_ui.Home_Window(
             self.settings.screen_width,
-            700,
+            self.settings.screen_height,
             self.settings.screen_width,
             self.settings.screen_height
         )  # imgwidth, imgheight, screenwidth, screenheight
