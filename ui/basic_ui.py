@@ -31,17 +31,17 @@ class Home_Window(pg.Surface):
 
         self.text = Component_Text(screen_width, int(screen_height * .33))
         self.text.set_text("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-        self.text.set_coors(0, self.img.img_height)
+        self.text.set_coors(0, self.img.img_height-200)
         self.text.set_fontsize(25)
         self.text.set_screen_dimensions(screen_width, screen_height)
 
     def _load_buttons(self):
         self.play_button = Component_Button("Play", 150, 50, self)
-        self.play_button.set_coors(210, 500)
+        self.play_button.set_coors(610, self.screen_height-80)
         self.stop_button = Component_Button("Stop", 150, 50, self)
-        self.stop_button.set_coors(410, 500)
+        self.stop_button.set_coors(910, self.screen_height-80)
         self.pause_button = Component_Button("Pause", 150, 50, self)
-        self.pause_button.set_coors(610, 500)
+        self.pause_button.set_coors(1210, self.screen_height-80)
 
     def _load_assets(self):
         self.arial = pg.font.SysFont("Arial", 25)
