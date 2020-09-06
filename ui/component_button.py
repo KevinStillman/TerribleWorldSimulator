@@ -1,5 +1,5 @@
 import pygame.font
-from src.colors import Crimson, Black
+from src.colors import Firebrick, Black
 from ui.component_base import Component_Base
 
 
@@ -14,7 +14,7 @@ class Component_Button(Component_Base):
         self.screen_rect = baseui.screen_width, baseui.screen_height
         # just place holders
         self.x_coors, self.y_coors = 0, 0
-        self.button_color = Crimson
+        self.button_color = Firebrick
         self.text_color = Black
         self.font = pygame.font.SysFont(None, 48, bold=True)
         self.button_label = label
