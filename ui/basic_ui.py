@@ -1,7 +1,7 @@
 import pygame as pg
 import sys
 
-from src.colors import White, Black
+from src.colors import White, Black, Light_black
 
 from ui.component_img import Component_Img
 from ui.component_text import Component_Text
@@ -68,7 +68,7 @@ class Home_Window(pg.Surface):
 
     def update(self):
         # Draw background
-        self.fill(White)
+        self.fill(Light_black)
 
         # Drawing the Image
         self.img.update()

@@ -3,7 +3,8 @@ from ui.component_base import Component_Base
 import sys
 from math import ceil
 
-from src.colors import Black, White
+from src.colors import Black, White, Light_black
+
 
 class Component_Text(Component_Base):
     def __init__(self, text_width: int, text_height: int):
@@ -23,7 +24,7 @@ class Component_Text(Component_Base):
     def set_text(self, text: str):
         # NOTE: The text string might become a text bullet list depending on how versatile and stats
         self.text_str = text
-        self.text = self.arial.render(text, False, Black)
+        self.text = self.arial.render(text, False, White)
 
     def set_fontsize(self, font_size: int):
         self.font_size = font_size
@@ -34,15 +35,16 @@ class Component_Text(Component_Base):
         self.border_width = border_width
         # Draw border
 
-        pg.draw.line(self, Black, (0,0), (self.screen_width, 0), border_width)
-        pg.draw.line(self, Black, (0,0), (0,self.text_height), border_width)
-        pg.draw.line(self, Black, (self.screen_width, 0), (self.screen_width, self.text_height), border_width)
-        pg.draw.line(self, Black, (0, self.text_height), (self.screen_width, self.text_height), border_width)
+        pg.draw.line(self, Black, (0, 0), (self.screen_width, 0), border_width)
+        pg.draw.line(self, Black, (0, 0), (0, self.text_height), border_width)
+        pg.draw.line(self, Black, (self.screen_width, 0),
+                     (self.screen_width, self.text_height), border_width)
+        pg.draw.line(self, Black, (0, self.text_height),
+                     (self.screen_width, self.text_height), border_width)
 
     # This cuts words
     def do_text_wrap(self):
         # NOTE: Text wrap functionality will change as the simulation and stats change
-
         '''NOTE: It's possible many high computing fucntions in c++ instead of python for quicker run-time '''
         text_lines = []
         currlinesize = 0
@@ -61,15 +63,15 @@ class Component_Text(Component_Base):
 
         # Render all the text lines
         line_height = ceil(self.char_pixel_size[1])
-        for ind,i in enumerate(text_lines):
+        for ind, i in enumerate(text_lines):
             # print(i)
-            txt = self.arial.render(i, False, Black)
-            self.blit(txt, txt.get_rect(topleft=(0, line_height * ind)))
+            txt = self.arial.render(i, False, White)
+            self.blit(txt, txt.get_rect(topleft=(10, line_height * ind)))
 
         # exit()
 
     def update(self):
-        self.fill(White)
+        self.fill(Light_black)
 
         self.do_text_wrap()
         # self.blit(self.text, self.text.get_rect())
