@@ -66,7 +66,7 @@ class Component_Text(Component_Base):
         for ind, i in enumerate(text_lines):
             # print(i)
             txt = self.arial.render(i, False, White)
-            self.blit(txt, txt.get_rect(topleft=(0, line_height * ind)))
+            self.blit(txt, txt.get_rect(topleft=(10, line_height * ind)))
 
         # exit()
 
