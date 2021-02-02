@@ -37,11 +37,11 @@ class Home_Window(pg.Surface):
 
     def _load_buttons(self):
         self.play_button = Component_Button("Play", 150, 50, self)
-        self.play_button.set_coors(610, self.screen_height-80)
+        self.play_button.set_coors(610, self.screen_height-130) #was 610, self.screen_height-80
         self.stop_button = Component_Button("Stop", 150, 50, self)
-        self.stop_button.set_coors(910, self.screen_height-80)
+        self.stop_button.set_coors(910, self.screen_height-130)
         self.pause_button = Component_Button("Pause", 150, 50, self)
-        self.pause_button.set_coors(1210, self.screen_height-80)
+        self.pause_button.set_coors(1210, self.screen_height-130)
 
     def _load_assets(self):
         self.arial = pg.font.SysFont("Arial", 25)
