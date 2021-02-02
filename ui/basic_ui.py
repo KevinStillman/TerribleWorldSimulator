@@ -36,11 +36,11 @@ class Home_Window(pg.Surface):
         self.text.set_screen_dimensions(screen_width, screen_height)
 
     def _load_buttons(self):
-        self.play_button = Component_Button("Play", 150, 50, self)
-        self.play_button.set_coors(610, self.screen_height-130)                 #  WIN >>was 610, self.screen_height-80
-        self.stop_button = Component_Button("Stop", 150, 50, self)              # On Macbook, buttons were cut off so
-        self.stop_button.set_coors(910, self.screen_height-130)                 # the coords were changed from -80 to
-        self.pause_button = Component_Button("Pause", 150, 50, self)            # -130
+        self.play_button = Component_Button("Play", 150, 50)
+        self.play_button.set_coors(610, self.screen_height-130)           #  WIN >>was 610, self.screen_height-80
+        self.stop_button = Component_Button("Stop", 150, 50)              # On Macbook, buttons were cut off so
+        self.stop_button.set_coors(910, self.screen_height-130)           # the coords were changed from -80 to
+        self.pause_button = Component_Button("Pause", 150, 50)            # -130
         self.pause_button.set_coors(1210, self.screen_height-130)
 
     def _load_assets(self):
@@ -56,15 +56,19 @@ class Home_Window(pg.Surface):
     #     self.__init__(self.w * new_width / 1920, self.h * new_height / 1080, self.w, self.h)
     #     self.img.scale_img(self.w // oldw, self.h // oldh)
 
-    def check_buttons(self, pos):
-        mouse_position = pos
+    def check_buttons(self, mouse_pos):
 
-        if self.play_button.rect.collidepoint(mouse_position):
+        if self.play_button.rect.collidepoint(mouse_pos):
             print("Play button pressed!")
-        elif self.stop_button.rect.collidepoint(mouse_position):
+        elif self.stop_button.rect.collidepoint(mouse_pos):
             print("Stop button pressed!")
-        elif self.pause_button.rect.collidepoint(mouse_position):
+        elif self.pause_button.rect.collidepoint(mouse_pos):
             print("Pause button pressed!")
+    
+    def _blit_buttons(self):
+        self.blit(self.play_button, self.play_button.rect)
+        self.blit(self.stop_button, self.stop_button.rect)
+        self.blit(self.pause_button, self.pause_button.rect)
 
     def update(self):
         # Draw background
@@ -79,6 +83,4 @@ class Home_Window(pg.Surface):
         self.text.update()
         self.blit(self.text, self.text.bounding_rect)
 
-        self.play_button.draw_button()
-        self.stop_button.draw_button()
-        self.pause_button.draw_button()
+        self._blit_buttons()
