@@ -3,9 +3,9 @@ import sys
 
 from src.colors import White, Black, Light_black
 
-from ui.component_img import Component_Img
-from ui.component_text import Component_Text
-from ui.component_button import Component_Button
+from .components.component_img import Component_Img
+from .components.component_text import Component_Text
+from .components.component_button import Component_Button
 
 
 class Home_Window(pg.Surface):

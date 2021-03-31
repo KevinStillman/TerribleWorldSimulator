@@ -1,6 +1,6 @@
 import pygame
 from src.colors import Firebrick, Black
-from ui.component_base import Component_Base
+from .component_base import Component_Base
 
 
 class Component_Button(Component_Base):

@@ -1,5 +1,5 @@
 import pygame as pg
-from ui.component_base import Component_Base
+from .component_base import Component_Base
 import sys
 
 from src.colors import Black
